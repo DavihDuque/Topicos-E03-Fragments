@@ -11,6 +11,8 @@ import androidx.fragment.app.ListFragment;
 
 import com.example.fragments.R;
 
+import java.util.Objects;
+
 public class PlacesListFragment extends ListFragment {
 
     private Place[] lugares = {
@@ -35,10 +37,11 @@ public class PlacesListFragment extends ListFragment {
         Place selectedPlace = this.lugares[position];
 
 
-    FragmentManager manager = this.getActivity().getSupportFragmentManager();
+    FragmentManager manager = this.requireActivity().getSupportFragmentManager();
 
     PlaceFragment placeFragment = (PlaceFragment) manager.findFragmentById(R.id.frag_place_details);
 
+        assert placeFragment != null;
         placeFragment.updatePlace(selectedPlace);
     }
 }
